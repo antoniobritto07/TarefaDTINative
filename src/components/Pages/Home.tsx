@@ -48,7 +48,7 @@ export default function Home(): ReactElement {
         <View style={styles.container}>
             <View style={styles.titleArea}>
                 <Text style={styles.title} >1º Desafio das capacitações de Native da DTI</Text>
-                <Text style={styles.title} >Get the date set at the first imput,
+                <Text style={styles.subtitle} >Get the date set at the first imput,
                 and after it do the sum with the hours that was set at the second imput,
                  and show the result below</Text>
             </View>
@@ -97,12 +97,12 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
+        color:"blue",
         marginBottom: "50px"
     },
     subtitle: {
-        fontSize: 15,
+        fontSize: 18,
         fontWeight: "600",
-
     },
     input: {
         borderWidth: 2,
