@@ -1,8 +1,19 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import FirstInput from '../Atoms/FirstInput';
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamsList } from "../../types/navigation";;
 
-export default function Home(): ReactElement {
+type HomeNavigationProps = StackNavigationProp<
+    RootStackParamsList,
+    'Home'
+>;
+
+type HomeProps = {
+    navigation: HomeNavigationProps;
+}
+
+function Home({ navigation }: HomeProps): ReactElement {
 
     const [date, setDate] = useState("");
     const [dateError, setDateError] = useState("");
@@ -63,6 +74,7 @@ export default function Home(): ReactElement {
             <View>
                 <Text style={styles.resultTitle}>Resultado:</Text>
                 <Text style={styles.result}>{result}</Text>
+                {result != "" && <Button title="Navegar para outra página" onPress={() => navigation.navigate('Description')} />}
             </View>
         </View>
     );
@@ -97,7 +109,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 30,
-        color:"blue",
+        color: "blue",
         marginBottom: "50px"
     },
     subtitle: {
@@ -118,6 +130,9 @@ const styles = StyleSheet.create({
     },
     result: {
         fontSize: 18,
-        color: 'green'
+        color: 'green',
+        marginBottom: 10
     }
 });
+
+export default Home;
