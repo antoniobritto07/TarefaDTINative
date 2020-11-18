@@ -13,7 +13,7 @@ type HomeProps = {
     navigation: HomeNavigationProps;
 }
 
-function Home({ navigation }: HomeProps): ReactElement {
+function Home({ navigation, route }: any): ReactElement {
 
     const [date, setDate] = useState("");
     const [dateError, setDateError] = useState("");
@@ -74,7 +74,9 @@ function Home({ navigation }: HomeProps): ReactElement {
             <View>
                 <Text style={styles.resultTitle}>Resultado:</Text>
                 <Text style={styles.result}>{result}</Text>
-                {result != "" && <Button title="Navegar para outra página" onPress={() => navigation.navigate('Description')} />}
+                {result !== "" && <Button title="Navegar para outra página"
+                    onPress={() => navigation.navigate('Result', { resultShow: result })}
+                />}
             </View>
         </View>
     );
@@ -95,9 +97,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-    },
-    studant: {
-        fontSize: 20,
     },
     inputArea: {
         width: 'auto',
